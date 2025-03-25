@@ -133,48 +133,45 @@
     </div>
 
     <script>
-        function updateActiveTab(app) {
-            // Hide all content
-            document.querySelectorAll(".content").forEach(c => c.classList.remove("active"));
-            document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+function updateActiveTab(app) {
+    // Hide all content sections
+    document.querySelectorAll(".content").forEach(c => c.classList.remove("active"));
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
 
-            // Show selected content
-            let activeContent = document.getElementById(app);
-            let activeTab = document.querySelector(`.tab[data-app="${app}"]`);
+    // Show selected content
+    let activeContent = document.getElementById(app);
+    let activeTab = document.querySelector(`.tab[data-app="${app}"]`);
 
-            if (activeContent && activeTab) {
-                activeContent.classList.add("active");
-                activeTab.classList.add("active");
-            }
-        }
+    if (activeContent && activeTab) {
+        activeContent.classList.add("active");
+        activeTab.classList.add("active");
+    }
+}
 
-        function getAppFromURL() {
-            let hash = window.location.hash.replace("#", "").toLowerCase();
-            let app = hash || "auralis"; // Default to Auralis
-            let hash = window.location.hash.replace("#", "").toLowerCase();
-            let app = path || hash || "auralis"; // Default to Auralis
+function getAppFromURL() {
+    let hash = window.location.hash.replace("#", "").toLowerCase();
+    return ["auralis", "app2", "app3"].includes(hash) ? hash : "auralis"; // Default to Auralis
+}
 
-            return ["auralis", "app2", "app3"].includes(app) ? app : "auralis";
-        }
+// Event listener for tab clicks
+document.querySelectorAll(".tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+        let app = tab.dataset.app;
+        window.location.hash = app; // Update URL
+        updateActiveTab(app);
+    });
+});
 
-        // Event listener for tab clicks
-        document.querySelectorAll(".tab").forEach(tab => {
-            tab.addEventListener("click", () => {
-                let app = tab.dataset.app;
-                window.location.hash = app;
-                updateActiveTab(app);
-            });
-        });
+// Update tab based on URL on load
+document.addEventListener("DOMContentLoaded", () => {
+    updateActiveTab(getAppFromURL());
+});
 
-        // Update tab based on URL on load
-        document.addEventListener("DOMContentLoaded", () => {
-            updateActiveTab(getAppFromURL());
-        });
-
-        // Handle back/forward navigation
-        window.addEventListener("popstate", () => {
-            updateActiveTab(getAppFromURL());
-        });
+// Handle back/forward navigation
+window.addEventListener("hashchange", () => {
+    updateActiveTab(getAppFromURL());
+});
+        
     </script>
 </body>
 </html>
