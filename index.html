@@ -150,7 +150,7 @@ function updateActiveTab(app) {
 
 function getAppFromURL() {
     let hash = window.location.hash.replace("#", "").toLowerCase();
-    return ["auralis", "Synergy", "app3"].includes(hash) ? hash : "auralis"; // Default to Auralis
+    return ["auralis", "synergy", "app3"].includes(hash) ? hash : "auralis"; // Default to Auralis
 }
 
 // Event listener for tab clicks
