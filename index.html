@@ -81,7 +81,7 @@
     <div class="tabs">
         <button class="tab" data-app="auralis">Auralis</button>
         <button class="tab" data-app="synergy">Synergy</button>
-        <button class="tab" data-app="app3">App3</button>
+        <button class="tab" data-app="optipin">OptiPin</button>
     </div>
 
     <div class="container">
@@ -101,7 +101,7 @@
 
         <!-- App2 Privacy Policy -->
         <div id="synergy" class="content">
-            <h1>Privacy Policy - App2</h1>
+            <h1>Privacy Policy - Synergy</h1>
             <p>Last updated: Apr 2025</p>
             <h2>1. Introduction</h2>
             <p>Welcome to <strong>Synergy</strong>. Your privacy matters to us.</p>
@@ -114,11 +114,11 @@
         </div>
 
         <!-- App3 Privacy Policy -->
-        <div id="app3" class="content">
-            <h1>Privacy Policy - App3</h1>
-            <p>Last updated: March 2025</p>
+        <div id="optipin" class="content">
+            <h1>Privacy Policy - OptiPin</h1>
+            <p>Last updated: May 2025</p>
             <h2>1. Introduction</h2>
-            <p>Welcome to <strong>App3</strong>. We respect your privacy.</p>
+            <p>Welcome to <strong>OptiPin</strong>. We respect your privacy.</p>
             <h2>2. Information We Collect</h2>
             <p>We do not collect any personal information.</p>
             <h2>3. Your Rights</h2>
@@ -150,7 +150,7 @@ function updateActiveTab(app) {
 
 function getAppFromURL() {
     let hash = window.location.hash.replace("#", "").toLowerCase();
-    return ["auralis", "synergy", "app3"].includes(hash) ? hash : "auralis"; // Default to Auralis
+    return ["auralis", "synergy", "optipin"].includes(hash) ? hash : "auralis"; // Default to Auralis
 }
 
 // Event listener for tab clicks
